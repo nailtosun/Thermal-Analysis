@@ -1,0 +1,11 @@
+/COM,ANSYS RELEASE Release 18.2      BUILD 18.2      UP20170726       00:42:32
+
+ *** WARNING ***                         CP =       1.125   TIME= 00:42:32
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** WARNING ***                         CP =       1.328   TIME= 00:42:32
+ The program chosen initial timestep/load-factor is arbitrary.  It is    
+ necessary for the user to supply a suitable initial                     
+ timestep/load-factor through the NSUB or DELTIM command for             
+ convergence and overall efficiency.                                     

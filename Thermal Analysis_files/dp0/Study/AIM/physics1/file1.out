@@ -1,0 +1,147 @@
+
+ PRINTOUT RESUMED BY /GOP
+
+ *****  ANSYS SOLUTION ROUTINE  *****
+
+ PRINTOUT RESUMED BY /GOP
+
+                      L O A D   S T E P   O P T I O N S
+
+   LOAD STEP NUMBER. . . . . . . . . . . . . . . .     1
+   TIME AT END OF THE LOAD STEP. . . . . . . . . .  1.0000    
+   AUTOMATIC TIME STEPPING . . . . . . . . . . . .    ON
+      INITIAL NUMBER OF SUBSTEPS . . . . . . . . .     1
+      MAXIMUM NUMBER OF SUBSTEPS . . . . . . . . .  5000
+      MINIMUM NUMBER OF SUBSTEPS . . . . . . . . .     1
+      START WITH TIME STEP FROM PREVIOUS SUBSTEP .   YES
+   MAXIMUM NUMBER OF EQUILIBRIUM ITERATIONS. . . .    15
+   STEP CHANGE BOUNDARY CONDITIONS . . . . . . . .    NO
+   TERMINATE ANALYSIS IF NOT CONVERGED . . . . . .YES (EXIT)  
+   CONVERGENCE CONTROLS. . . . . . . . . . . . . .USE DEFAULTS
+   PRINT OUTPUT CONTROLS . . . . . . . . . . . . .NO PRINTOUT
+   DATABASE OUTPUT CONTROLS
+      ITEM     FREQUENCY   COMPONENT
+       ALL       NONE               
+      MISC        ALL       C2      
+      NSOL        ALL               
+      RSOL        ALL               
+
+
+ *** NOTE ***                            CP =       0.797   TIME= 00:42:33
+ Symmetric Deformable- deformable contact pair identified by real        
+ constant set 2 and contact element type 3 has been set up.  The         
+ companion pair has real constant set ID 3.  Both pairs should have the  
+ same behavior.                                                          
+ ANSYS will keep the current pair and deactivate its companion pair,     
+ resulting in asymmetric contact.                                        
+ Pure thermal contact is activated.
+ Contact algorithm: MPC based approach
+
+ *** NOTE ***                            CP =       0.797   TIME= 00:42:33
+ Contact related post- process items (ETABLE, pressure ...) are not      
+ available.                                                              
+ Contact detection at: nodal point (normal to target surface)
+ MPC will be built internally to handle bonded contact.
+ Average contact surface length               0.44405E-02
+ Average contact pair depth                   0.42000E-02
+ Default pinball region factor PINB           0.25000    
+ The resulting pinball region                 0.10500E-02
+ Default target edge extension factor TOLS     10.000    
+ Initial penetration/gap is excluded.
+ Bonded contact (always) is defined.
+
+ *** NOTE ***                            CP =       0.797   TIME= 00:42:33
+ Max.  Initial penetration 0 was detected between contact element 15656  
+ and target element 15721.                                               
+ ****************************************
+  
+
+ *** NOTE ***                            CP =       0.797   TIME= 00:42:33
+ Symmetric Deformable- deformable contact pair identified by real        
+ constant set 3 and contact element type 5 has been set up.  The         
+ companion pair has real constant set ID 2.  Both pairs should have the  
+ same behavior.                                                          
+ ANSYS will deactivate the current pair and keep its companion pair,     
+ resulting in asymmetric contact.                                        
+ Pure thermal contact is activated.
+ Contact algorithm: MPC based approach
+
+ *** NOTE ***                            CP =       0.797   TIME= 00:42:33
+ Contact related post- process items (ETABLE, pressure ...) are not      
+ available.                                                              
+ Contact detection at: nodal point (normal to target surface)
+ MPC will be built internally to handle bonded contact.
+ Average contact surface length               0.10447E-01
+ Average contact pair depth                   0.31453E-02
+ Default pinball region factor PINB           0.25000    
+ The resulting pinball region                 0.78634E-03
+ Default target edge extension factor TOLS     10.000    
+ Initial penetration/gap is excluded.
+ Bonded contact (always) is defined.
+
+ *** NOTE ***                            CP =       0.797   TIME= 00:42:33
+ Max.  Initial penetration 0 was detected between contact element 16043  
+ and target element 16023.                                               
+ ****************************************
+  
+
+
+
+  *** MASS SUMMARY BY ELEMENT TYPE ***
+
+  TYPE      MASS
+     1  0.127596    
+     2  0.157414    
+ AN AVERAGE OF THE X-, Y-, AND Z-DIRECTION MASS TERMS ARE USED
+     HT FLOW CONVERGENCE VALUE=   21.15      CRITERION=  0.2115E-01
+
+  Local memory allocated for solver              =     25.549 MB
+  Local memory required for in-core solution     =     17.267 MB
+  Local memory required for out-of-core solution =      9.117 MB
+
+ *** NOTE ***                            CP =       2.328   TIME= 00:42:36
+ The Distributed Sparse Matrix Solver is currently running in the        
+ in-core memory mode.  This memory mode uses the most amount of memory   
+ in order to avoid using the hard drive as much as possible, which most  
+ often results in the fastest solution time.  This mode is recommended   
+ if enough physical memory is present to accommodate all of the solver   
+ data.                                                                   
+    EQUIL ITER   1 COMPLETED.  NEW TRIANG MATRIX.  MAX DOF INC=   222.5    
+     HT FLOW CONVERGENCE VALUE=  0.7364      CRITERION=  0.8626E-02
+    EQUIL ITER   2 COMPLETED.  NEW TRIANG MATRIX.  MAX DOF INC= -0.9572    
+     HT FLOW CONVERGENCE VALUE=  0.1629E-01  CRITERION=  0.8616E-02
+    EQUIL ITER   3 COMPLETED.  NEW TRIANG MATRIX.  MAX DOF INC=  0.1561E-01
+     HT FLOW CONVERGENCE VALUE=  0.2454E-03  CRITERION=  0.8616E-02 <<< CONVERGED
+    >>> SOLUTION CONVERGED AFTER EQUILIBRIUM ITERATION   3
+
+   *** ELEMENT RESULT CALCULATION TIMES
+     TYPE    NUMBER   ENAME      TOTAL CP  AVE CP
+
+        1       315  SOLID279      0.031   0.000099
+        2     11464  SOLID87       0.141   0.000012
+        3        63  CONTA174      0.016   0.000248
+        5        47  CONTA174      0.000   0.000000
+
+   *** NODAL LOAD CALCULATION TIMES
+     TYPE    NUMBER   ENAME      TOTAL CP  AVE CP
+
+        1       315  SOLID279      0.000   0.000000
+        2     11464  SOLID87       0.062   0.000005
+        3        63  CONTA174      0.000   0.000000
+        5        47  CONTA174      0.000   0.000000
+ *** LOAD STEP     1   SUBSTEP     1  COMPLETED.    CUM ITER =      3
+ *** TIME =   1.00000         TIME INC =   1.00000    
+
+
+ *** ANSYS BINARY FILE STATISTICS
+  BUFFER SIZE USED= 16384
+        2.250 MB WRITTEN ON ELEMENT SAVED DATA FILE: file1.esav
+        4.750 MB WRITTEN ON ASSEMBLED MATRIX FILE: file1.full
+        2.438 MB WRITTEN ON RESULTS FILE: file1.rth
+
+ FINISH SOLUTION PROCESSING
+
+
+ ***** ROUTINE COMPLETED *****  CP =         4.500
+
+

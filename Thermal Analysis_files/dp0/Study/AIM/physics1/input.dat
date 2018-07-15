@@ -1,0 +1,129 @@
+! MAPDL input file written by Workbench Study version 18.2
+! Writing time: 07/16/2018 00:42:28
+/com,--- Data in consistent MKS units.
+/units,MKS
+/nopr
+/config,noeldb,1 	! Write element results into the results file instead of the default which is both results file AND database.
+/wb,file,start,study 	! Signify a Workbench Study input file
+fini
+/prep7
+toffst,273.15 		! Temperature offset from absolute zero
+tref,22 		! This is internally used to set tunif command
+shpp,off,,nowarn 	! Turn off shape checking because checks are already performed inside WB mesher
+/nolist
+etcon,set 		! Allow MAPDL to choose best keyopts for 180x elements
+local,12,0,0.000000000000000E+000,0.000000000000000E+000,0.000000000000000E+000,0.000000000000000E+000,0.000000000000000E+000,0.000000000000000E+000
+
+csys,0 			! Setting current coordinate system to global
+/com,*********** Write element types ***********
+
+et,1,279 		! Element type for Physics Options 1
+et,2,87 		! Element type for Physics Options 1
+
+et,3,174 		! Element type for Contact 1
+keyo,3,1,2 		! Activate thermal DOFs only
+keyo,3,4,2 		! Detection on nodal point - normal to target surface (from program controlled setting)
+keyo,3,2,2 		! Multi point contact formulation
+keyo,3,9,1 		! Ignore initial gaps/penetration
+keyo,3,7,0 		! No contact prediction
+keyo,3,12,5 		! Always bonded contact
+keyo,3,8,2 		! Auto create asymmetric contact
+et,4,170 		! Element type for Contact 1
+et,5,174 		! Element type for Contact 1
+keyo,5,1,2 		! Activate thermal DOFs only
+keyo,5,4,2 		! Detection on nodal point - normal to target surface (from program controlled setting)
+keyo,5,2,2 		! Multi point contact formulation
+keyo,5,9,1 		! Ignore initial gaps/penetration
+keyo,5,7,0 		! No contact prediction
+keyo,5,12,5 		! Always bonded contact
+keyo,5,8,2 		! Auto create asymmetric contact
+et,6,170 		! Element type for Contact 1
+/com,*********** Done writing element types ***********
+/com,*********** Write materials ***********
+/wb,mat,start 		! Starting to write materials
+mp,reft,2,22 		! C
+mp,dens,2,4900 		! kg m^-3
+mp,kxx,2,4.5 		! W m^-1 C^-1
+mp,reft,3,22 		! C
+mp,dens,3,2770 		! kg m^-3
+mptemp,,,,,,,, 		! Clear temperatures
+mptemp,1,-100 		! C
+mptemp,2,0 		! C
+mptemp,3,100 		! C
+mptemp,4,200 		! C
+mpdata,kxx,3,1,114 		! W m^-1 C^-1
+mpdata,kxx,3,2,144 		! W m^-1 C^-1
+mpdata,kxx,3,3,165 		! W m^-1 C^-1
+mpdata,kxx,3,4,175 		! W m^-1 C^-1
+/wb,mat,end 		! Done writing materials
+r,2 			! Real constant set for Contact 1
+r,3 			! Real constant set for symmetric Contact 1
+/com,*********** Read mesh ***********
+/input,'mesh','dat'
+
+/com,*********** Read connection elements ***********
+/input,'connection','dat'
+
+/com,*********** Read components ***********
+/input,'component','dat'
+
+alls
+cm,_AllNodes,node
+cm,_AllElems,elem
+fini
+*get,_numnode,node,0,count
+*get,_numelem,elem,0,count
+/gopr
+/com,--- Number of total nodes = %_numnode%
+/com,--- Number of total elements = %_numelem%
+/gst,on,on
+/com,****************************************************************************
+/com,*************************    SOLUTION       ********************************
+/com,****************************************************************************
+/solu
+antype,static
+/com,****************************************************
+/com,*********** Solve for Load Step 1 ***********
+/com, Start writing variable values
+*set,_val1,3840245.77572965
+*set,_val2,25
+/com, Done writing variable values
+d,C3,temp,%_val2% 		! Contributions from Temperature 1
+/nopr
+cmsel,s,C1
+bfe,C1,hgen,,%_val1% 	! Applying Heat Generation 1
+alls
+/gopr
+outres,erase
+outres,all,none 		! Don't write any results to the result file
+eqsl,sparse,,,,,1 		! Using sparse solver
+cntr,out,no 			! Write contact information to the output file or to the screen
+nldiag,cont,iter 		! Write non-linear contact diagnostics to jobname.cnd file
+time,1 				! Step end time
+stabilize,off 			! Deactivate stabilization
+neqit,0 			! Program controlled number of equilibrium iterations
+outres,misc,all,C2 		! 
+outres,nsol,all 		! Writing nodal DOF solution at every substep
+outres,rsol,all 		! Writing nodal reaction loads at every substep
+alls
+! check interactive state
+*get,ANSINTER_,active,,int
+*if,ANSINTER_,ne,0,then
+/eof
+*endif
+! *********** SOLVE COMMAND ***********
+solve
+/com,****************************************************
+/com,*********** Finished Solve for Load Step 1 ***********
+/com,
+fini
+/post1
+fini
+*get,ANSINTER_,active,,int
+*if,ANSINTER_,eq,0,then
+! Write file.success to verify the run made it this far
+/output,'file',success
+/com, Update of solution is successful...
+/output,'output','lis',,Append
+*endif
+/wb,file,end 			! Done with Workbench Study generated input

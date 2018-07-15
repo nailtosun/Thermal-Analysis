@@ -1,0 +1,72 @@
+    *-------------------------------------------------------------*
+    |                                                             |
+    |  W E L C O M E   T O   T H E   A N S Y S (R)  P R O G R A M |
+    |                                                             |
+    *-------------------------------------------------------------*
+    ***************************************************************
+    *                  ANSYS 18.2 LEGAL NOTICES                   *
+    ***************************************************************
+    *                                                             *
+    * Copyright 2016 SAS IP, Inc.  All rights reserved.           *
+    * Unauthorized use, distribution or duplication is            *
+    * prohibited.                                                 *
+    * ANSYS is a registered trademark of ANSYS, Inc or its        *
+    * subsidiaries in the United States or other countries.       *
+    *                                                             *
+    * ANSYS, Inc. is UL registered                                *
+    * ISO 9001:2008 Companies.                                    *
+    *                                                             *
+    ***************************************************************
+    *                                                             *
+    * THIS ANSYS SOFTWARE PRODUCT AND PROGRAM DOCUMENTATION       *
+    * INCLUDE TRADE SECRETS AND CONFIDENTIAL AND PROPRIETARY      *
+    * PRODUCTS OF ANSYS, INC., ITS SUBSIDIARIES, OR LICENSORS.    *
+    * The software products and documentation are furnished by    *
+    * ANSYS, Inc. or its subsidiaries under a software license    *
+    * agreement that contains provisions concerning               *
+    * non-disclosure, copying, length and nature of use,          *
+    * compliance with exporting laws, warranties, disclaimers,    *
+    * limitations of liability, and remedies, and other           *
+    * provisions.  The software products and documentation may be *
+    * used, disclosed, transferred, or copied only in accordance  *
+    * with the terms and conditions of that software license      *
+    * agreement.                                                  *
+    *                                                             *
+        Command line arguments: 
+    * See the ANSYS, Inc. online documentation or the ANSYS, Inc. *
+            -intputFile C:\Users\nailt\AppData\Local\Temp\proxy_input19037852.xml
+    * re-export.                                                  *
+            -parentHost 127.0.0.1
+    * licenses).                                                  *
+            -parentPort 51032
+    *-------------------------------------------------------------*
+
+    Broadcasting data on port 51033
+
+
+    Received new front end connection
+
+    Chart /Study/MonitorChart:MonitorChart 1 has Iteration as PrimaryTracker
+ 
+    Connection made to:  MAPDL
+    Loading resource file for the trackers :  C:\Program Files\ANSYS Student\v182\Addins\AIM\bin\Win64\SolverInventory\MAPDLTrackerDescriptors.xml
+    Loading resource file for the events :  C:\Program Files\ANSYS Student\v182\Addins\AIM\bin\Win64\SolverInventory\MAPDLTrackerDescriptors.xml
+
+*** Warning:
+    Cannot find primary tracker for chart /Study/MonitorChart:MonitorChart 1 - Using default tracker
+
+    Successfully registered solver MAPDL
+
+    Begin monitoring
+    MAPDL solve is complete
+    * Number of notes:  Value = 13
+    * Number of warnings:  Value = 2
+    * Number of errors:  Value = 0
+    Number of steps monitored: 303
+
+    All participants have completed
+    Saving Database
+    Disconnecting server...
+    Server disconnected
+
+    Finished
