@@ -1,0 +1,359 @@
+﻿# encoding: utf-8
+# Release 18.2
+SetScriptVersion(Version="18.2.109")
+system1 = GetSystem(Name="Study")
+geometryModelingComponent1 = Study.CreateTask(
+    Type="Geometry Modeling",
+    System=system1)
+with Transaction():
+    meshingComponent1 = Study.CreateTask(
+        Type="Meshing",
+        System=system1,
+        Input=geometryModelingComponent1)
+    meshing1 = meshingComponent1.GetTaskObject()
+    meshing1.EngineeringIntent = "StructuralOrThermalOrElectricConduction"
+    meshingComponent1.Refresh()
+    physicsDefinitionComponent1 = Study.CreateTask(
+        Type="Physics Definition",
+        System=system1,
+        Input=meshingComponent1)
+    physicsDefinitionComponent1.Refresh()
+    physicsDefinition1 = physicsDefinitionComponent1.GetTaskObject()
+    physicsDefinition1.CalculationType = "Static"
+    study1 = system1.GetContainer(ComponentName="Study")
+    solverSettings1 = study1.CreateEntity(
+        Type="SolverSettings",
+        Association=physicsDefinition1)
+    solvePhysicsComponent1 = Study.CreateTask(
+        Type="Solve Physics",
+        System=system1,
+        Input=physicsDefinitionComponent1)
+    solvePhysicsComponent1.Refresh()
+    physicsSolutionGroup1 = Study.CreateGroup(Name="Physics Solution")
+    physicsSolutionGroup1.Add(Component=physicsDefinitionComponent1)
+    physicsSolutionGroup1.Add(Component=solvePhysicsComponent1)
+    physicsRegion1 = study1.CreateEntity(
+        Type="PhysicsRegion",
+        Association=physicsDefinition1)
+    physicsRegion1.PhysicsType = "Thermal"
+    physicsRegion1.Location = "AllBodies()"
+    materialAssignment1 = study1.CreateEntity(
+        Type="MaterialAssignment",
+        Association=physicsDefinition1)
+    material1 = study1.CreateEntity(
+        Type="Material",
+        Association=physicsDefinition1)
+    material1.ImportEngineeringData(Name="Structural Steel")
+    materialAssignment1.Material = material1
+    materialAssignment1.Location = [physicsRegion1]
+    interfaceGenerator1 = study1.CreateEntity(
+        Type="InterfaceGenerator",
+        Association=physicsDefinition1)
+    transcript1 = study1.CreateEntity(
+        Type="Transcript",
+        Association=physicsDefinition1)
+    transcript1.DisplayText = "Thermal Output 1"
+    resultsEvaluationComponent1 = Study.CreateTask(
+        Type="Results Evaluation",
+        System=system1,
+        Input=solvePhysicsComponent1)
+    AddSourceToComponentInSystem(
+        SourceComponent=physicsDefinitionComponent1,
+        TargetComponent=resultsEvaluationComponent1)
+    resultsEvaluationComponent1.Refresh()
+    results1 = resultsEvaluationComponent1.GetTaskObject()
+    contourResult1 = study1.CreateEntity(
+        Type="ContourResult",
+        Association=results1)
+    contourResult1.Variable = "Temperature"
+    contourResult1.EvaluateFullRange = False
+    interfaceGenerator1.GenerateInteractions()
+    modeling1 = geometryModelingComponent1.GetTaskObject()
+    Modeling.ReloadDocument(ModelingAnchor=modeling1)
+with Transaction():
+    geometryModelingComponent1.Update(AllDependencies=True)
+    meshingComponent1.Refresh()
+    physicsDefinitionComponent1.Refresh()
+    solvePhysicsComponent1.Refresh()
+    resultsEvaluationComponent1.Refresh()
+template1 = GetTemplate(
+    TemplateName="Steady-State Thermal",
+    Solver="ANSYS")
+system2 = template1.CreateSystem()
+geometry1 = system2.GetContainer(ComponentName="Geometry")
+geometry1.Edit(IsSpaceClaimGeometry=True)
+geometry1.Exit()
+geometry1.SetFile(FilePath=GetAbsoluteUserPathName("Design1.scdoc"))
+with Transaction():
+    modelComponent1 = system2.GetComponent(Name="Model")
+    modelComponent1.Refresh()
+    model1 = system2.GetContainer(ComponentName="Model")
+    model1.Edit()
+model1.Exit()
+with Transaction():
+    meshingComponent1.Update(AllDependencies=True)
+    physicsDefinitionComponent1.Refresh()
+    solvePhysicsComponent1.Refresh()
+    resultsEvaluationComponent1.Refresh()
+physicsRegion1.PhysicsType = "Structural, Thermal"
+physicsRegion1.PhysicsType = "Structural"
+physicsRegion1.PhysicsType = "Thermal"
+Modeling.ReloadDocument(ModelingAnchor=modeling1)
+with Transaction():
+    geometryModelingComponent1.Update(AllDependencies=True)
+    meshingComponent1.Refresh()
+    physicsDefinitionComponent1.Refresh()
+    solvePhysicsComponent1.Refresh()
+    resultsEvaluationComponent1.Refresh()
+with Transaction():
+    meshingComponent1.Update(AllDependencies=True)
+    physicsDefinitionComponent1.Refresh()
+    solvePhysicsComponent1.Refresh()
+    resultsEvaluationComponent1.Refresh()
+heatGeneration1 = study1.CreateEntity(
+    Type="HeatGeneration",
+    Association=physicsDefinition1,
+    Location=["FACE1", "FACE2", "FACE3", "FACE4", "FACE5", "FACE6", "FACE7", "FACE8", "FACE9", "FACE10", "FACE11", "FACE12", "FACE13", "FACE14", "FACE15", "FACE16", "FACE17", "FACE18", "FACE19", "FACE20", "FACE21", "FACE22", "FACE23", "FACE24", "FACE25", "FACE26", "FACE27", "FACE28", "FACE29", "FACE30", "FACE31", "FACE32", "FACE33", "FACE34", "FACE35", "FACE36", "FACE40", "FACE37", "FACE38", "FACE39"])
+Modeling.ReloadDocument(ModelingAnchor=modeling1)
+with Transaction():
+    geometryModelingComponent1.Update(AllDependencies=True)
+    meshingComponent1.Refresh()
+    physicsDefinitionComponent1.Refresh()
+    solvePhysicsComponent1.Refresh()
+    resultsEvaluationComponent1.Refresh()
+with Transaction():
+    meshingComponent1.Update(AllDependencies=True)
+    physicsDefinitionComponent1.Refresh()
+    solvePhysicsComponent1.Refresh()
+    resultsEvaluationComponent1.Refresh()
+heatGeneration2 = study1.CreateEntity(
+    Type="HeatGeneration",
+    Association=physicsDefinition1,
+    Location=["FACE1", "FACE2", "FACE3", "FACE4", "FACE5", "FACE6", "FACE7", "FACE8", "FACE9", "FACE10", "FACE11", "FACE12", "FACE13", "FACE14", "FACE15", "FACE16", "FACE17", "FACE18", "FACE19", "FACE20", "FACE21", "FACE22", "FACE23", "FACE24", "FACE25", "FACE26", "FACE27", "FACE28", "FACE29", "FACE30", "FACE31", "FACE32", "FACE33", "FACE34", "FACE35", "FACE36", "FACE40", "FACE37", "FACE38", "FACE39"])
+heatGeneration2.Magnitude = "100 [W]"
+materialAssignment2 = study1.CreateEntity(
+    Type="MaterialAssignment",
+    Association=physicsDefinition1,
+    Location=["FACE1", "FACE2", "FACE3", "FACE4", "FACE5", "FACE6", "FACE7", "FACE8", "FACE9", "FACE10", "FACE11", "FACE12", "FACE13", "FACE14", "FACE15", "FACE16", "FACE17", "FACE18", "FACE19", "FACE20", "FACE21", "FACE22", "FACE23", "FACE24", "FACE25", "FACE26", "FACE27", "FACE28", "FACE29", "FACE30", "FACE31", "FACE32", "FACE33", "FACE34", "FACE35", "FACE36", "FACE40", "FACE37", "FACE38", "FACE39", "FACE43", "FACE41", "FACE45", "FACE46", "FACE44"])
+with Transaction():
+    material2 = study1.CreateEntity(
+        Type="Material",
+        Association=physicsDefinition1)
+    material2.ImportEngineeringData(Name="Aluminum Alloy")
+    materialAssignment2.Material = material2
+materialAssignment3 = study1.CreateEntity(
+    Type="MaterialAssignment",
+    Association=physicsDefinition1)
+with Transaction():
+    material3 = study1.CreateEntity(
+        Type="Material",
+        Association=physicsDefinition1)
+    material3.ImportEngineeringData(Name="Aluminum Alloy")
+    materialAssignment3.Material = material3
+materialAssignment3.Location = [physicsRegion1]
+materialAssignment4 = materialAssignment3.Duplicate()
+materialAssignment5 = materialAssignment3.Duplicate()
+materialAssignment5.Location = ["FACE45"]
+Study.Delete(Items=[materialAssignment5])
+Study.Delete(Items=[materialAssignment1])
+Study.Delete(Items=[materialAssignment2])
+Study.Delete(Items=[materialAssignment4])
+Study.Delete(Items=[materialAssignment3])
+materialAssignment6 = study1.CreateEntity(
+    Type="MaterialAssignment",
+    Association=physicsDefinition1)
+with Transaction():
+    material4 = study1.CreateEntity(
+        Type="Material",
+        Association=physicsDefinition1)
+    material4.ImportEngineeringData(Name="Aluminum Alloy")
+    materialAssignment6.Material = material4
+materialAssignment7 = study1.CreateEntity(
+    Type="MaterialAssignment",
+    Association=physicsDefinition1,
+    Location=["FACE1", "FACE2", "FACE3", "FACE4", "FACE6", "FACE7", "FACE8", "FACE9", "FACE10", "FACE11", "FACE12", "FACE13", "FACE14", "FACE15", "FACE16", "FACE17", "FACE18", "FACE19", "FACE20", "FACE21", "FACE22", "FACE23", "FACE24", "FACE25", "FACE26", "FACE27", "FACE28", "FACE29", "FACE30", "FACE31", "FACE32", "FACE33", "FACE34", "FACE35", "FACE36", "FACE37", "FACE38", "FACE39", "FACE42"])
+with Transaction():
+    material5 = study1.CreateEntity(
+        Type="Material",
+        Association=physicsDefinition1)
+    material5.ImportEngineeringData(Name="Aluminum Alloy")
+    materialAssignment7.Material = material5
+Study.Delete(Items=[materialAssignment6])
+materialAssignment8 = study1.CreateEntity(
+    Type="MaterialAssignment",
+    Association=physicsDefinition1,
+    Location=["FACE41", "FACE46", "FACE45", "FACE44", "FACE43"])
+with Transaction():
+    material6 = study1.CreateEntity(
+        Type="Material",
+        Association=physicsDefinition1)
+    material6.ImportEngineeringData(Name="Copper")
+    materialAssignment8.Material = material6
+Study.Delete(Items=[heatGeneration1])
+Study.Delete(Items=[heatGeneration2])
+heatGeneration3 = study1.CreateEntity(
+    Type="HeatGeneration",
+    Association=physicsDefinition1)
+heatGeneration3.Location = ["BODY1"]
+heatGeneration3.Magnitude = "100 [W]"
+Study.Delete(Items=[materialAssignment8])
+materialAssignment7.Location = [physicsRegion1]
+solvePhysicsComponent1.Update(AllDependencies=True)
+Modeling.ReloadDocument(ModelingAnchor=modeling1)
+with Transaction():
+    geometryModelingComponent1.Update(AllDependencies=True)
+    meshingComponent1.Refresh()
+    physicsDefinitionComponent1.Refresh()
+    solvePhysicsComponent1.Refresh()
+    resultsEvaluationComponent1.Refresh()
+with Transaction():
+    meshingComponent1.Update(AllDependencies=True)
+    physicsDefinitionComponent1.Refresh()
+    solvePhysicsComponent1.Refresh()
+    resultsEvaluationComponent1.Refresh()
+solvePhysicsComponent1.Update(AllDependencies=True)
+resultsEvaluationComponent1.Update(AllDependencies=True)
+heatGeneration3.Location = ["FACE1", "FACE2", "FACE3", "FACE4", "FACE6", "FACE7", "FACE8", "FACE9", "FACE10", "FACE11", "FACE12", "FACE13", "FACE14", "FACE15", "FACE16", "FACE17", "FACE18", "FACE19", "FACE20", "FACE21", "FACE22", "FACE23", "FACE24", "FACE25", "FACE26", "FACE27", "FACE28", "FACE29", "FACE30", "FACE31", "FACE32", "FACE33", "FACE34", "FACE35", "FACE36", "FACE37", "FACE38", "FACE39", "FACE43", "FACE44", "FACE45", "FACE46", "FACE41", "FACE42", "BODY1"]
+heatGeneration3.Location = '"FACE41"'
+selectionSet1 = study1.CreateEntity(
+    Type="SelectionSet",
+    Association=physicsDefinition1)
+heatGeneration3.Location = [selectionSet1]
+selectionSet1.Location = ["FACE47"]
+Modeling.ReloadDocument(ModelingAnchor=modeling1)
+with Transaction():
+    geometryModelingComponent1.Update(AllDependencies=True)
+    meshingComponent1.Refresh()
+    physicsDefinitionComponent1.Refresh()
+    solvePhysicsComponent1.Refresh()
+    resultsEvaluationComponent1.Refresh()
+with Transaction():
+    meshingComponent1.Update(AllDependencies=True)
+    physicsDefinitionComponent1.Refresh()
+    solvePhysicsComponent1.Refresh()
+    resultsEvaluationComponent1.Refresh()
+heatGeneration3.Location = '"SOLID!"'
+heatGeneration3.Location = '"SOLID1"'
+heatGeneration3.Location = [selectionSet1]
+heatGeneration3.Location = []
+heatGeneration3.Location = ["BODY1"]
+solvePhysicsComponent1.Update(AllDependencies=True)
+solvePhysicsComponent1.Update(AllDependencies=True)
+Study.Delete(Items=[materialAssignment7])
+materialAssignment9 = study1.CreateEntity(
+    Type="MaterialAssignment",
+    Association=physicsDefinition1,
+    Location=["BODY1"])
+with Transaction():
+    material7 = study1.CreateEntity(
+        Type="Material",
+        Association=physicsDefinition1)
+    material7.ImportEngineeringData(Name="Copper")
+    materialAssignment9.Material = material7
+materialAssignment10 = study1.CreateEntity(
+    Type="MaterialAssignment",
+    Association=physicsDefinition1,
+    Location=["BODY3"])
+with Transaction():
+    material8 = study1.CreateEntity(
+        Type="Material",
+        Association=physicsDefinition1)
+    material8.ImportEngineeringData(Name="Aluminum Alloy")
+    materialAssignment10.Material = material8
+convection1 = study1.CreateEntity(
+    Type="Convection",
+    Association=physicsDefinition1)
+convection1.Location = "[]"
+convection1.Location = ["FACE87"]
+Study.Delete(Items=[convection1])
+solvePhysicsComponent1.Update(AllDependencies=True)
+temperatureConstraint1 = study1.CreateEntity(
+    Type="TemperatureConstraint",
+    Association=physicsDefinition1)
+temperatureConstraint1.Location = ["BODY3"]
+temperatureConstraint1.Magnitude = "25 [C]"
+with Transaction():
+    solvePhysicsComponent1.Update(AllDependencies=True)
+    resultsEvaluationComponent1.Refresh()
+resultsEvaluationComponent1.Update(AllDependencies=True)
+with Transaction():
+    contourResult2 = study1.CreateEntity(
+        Type="ContourResult",
+        Association=results1)
+    contourResult2.EvaluateFullRange = False
+    contourResult2.Variable = "Temperature"
+contourResult2.Evaluate()
+with Transaction():
+    singleValueResult1 = study1.CreateEntity(
+        Type="SingleValueResult",
+        Association=results1)
+    singleValueResult1.EvaluateFullRange = False
+    singleValueResult1.Function = "Sum"
+    singleValueResult1.Variable = "HeatFlowReaction"
+singleValueResult1.Evaluate()
+with Transaction():
+    vectorResult1 = study1.CreateEntity(
+        Type="VectorResult",
+        Association=results1)
+    vectorResult1.EvaluateFullRange = False
+Study.Delete(Items=[vectorResult1])
+Study.Delete(Items=[materialAssignment9])
+materialAssignment11 = study1.CreateEntity(
+    Type="MaterialAssignment",
+    Association=physicsDefinition1)
+with Transaction():
+    material9 = study1.CreateEntity(
+        Type="Material",
+        Association=physicsDefinition1)
+    material9.ImportEngineeringData(Name="Ceramic5")
+    materialAssignment11.Material = material9
+materialAssignment11.Location = ["BODY1"]
+with Transaction():
+    solvePhysicsComponent1.Update(AllDependencies=True)
+    resultsEvaluationComponent1.Refresh()
+Study.Delete(Items=[singleValueResult1])
+resultsEvaluationComponent1.Update(AllDependencies=True)
+with Transaction():
+    contourResult3 = study1.CreateEntity(
+        Type="ContourResult",
+        Association=results1)
+    contourResult3.EvaluateFullRange = False
+    contourResult3.Variable = "Temperature"
+contourResult3.Evaluate()
+Study.Delete(Items=[temperatureConstraint1])
+solvePhysicsComponent1.Update(AllDependencies=True)
+materialAssignment12 = study1.CreateEntity(
+    Type="MaterialAssignment",
+    Association=physicsDefinition1)
+with Transaction():
+    material10 = study1.CreateEntity(
+        Type="Material",
+        Association=physicsDefinition1)
+    material10.ImportEngineeringData(Name="Air")
+    materialAssignment12.Material = material10
+Study.Delete(Items=[materialAssignment12])
+temperatureConstraint2 = study1.CreateEntity(
+    Type="TemperatureConstraint",
+    Association=physicsDefinition1)
+temperatureConstraint2.Location = ["FACE55", "FACE58", "FACE62", "FACE66", "FACE70", "FACE74", "FACE76", "FACE83", "FACE53"]
+temperatureConstraint2.Magnitude = "25 [C]"
+with Transaction():
+    solvePhysicsComponent1.Update(AllDependencies=True)
+    resultsEvaluationComponent1.Refresh()
+resultsEvaluationComponent1.Update(AllDependencies=True)
+with Transaction():
+    contourResult4 = study1.CreateEntity(
+        Type="ContourResult",
+        Association=results1)
+    contourResult4.EvaluateFullRange = False
+    contourResult4.Variable = "Temperature"
+contourResult4.Evaluate()
+Save(Overwrite=True)
+with Transaction():
+    contourResult5 = study1.CreateEntity(
+        Type="ContourResult",
+        Association=results1)
+    contourResult5.EvaluateFullRange = False
+    contourResult5.Variable = "Temperature"
+resultsEvaluationComponent1.Update(AllDependencies=True)
+Save(Overwrite=True)
