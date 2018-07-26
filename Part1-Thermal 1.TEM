@@ -1,0 +1,75 @@
+
+****************************************************************
+****************************************************************
+**                                                            **
+**                                                            **
+**  SSS  III  M    M  U  U  L     A  TTTTT  III    OO   N   N **
+** S      I   MM  MM  U  U  L    A A   T     I    O  O  NN  N **
+**  SS    I   M MM M  U  U  L    AAA   T     I    O  O  N N N **
+**    S   I   M    M  U  U  L    A A   T     I    O  O  N  NN **
+** SSS   III  M    M   UU   LLL  A A   T    III    OO   N   N **
+**                                                            **
+**                                                            **
+**                Heat Transfer:                              **
+**           Distributed By: SOLIDWORKS Corporation           **
+**               6320 Canoga Avenue, Suite 300                **
+**               Woodland Hills, California 91367             **
+**               Telephone Number (818)673-2200               **
+**         Copyright 1988-2016 SOLIDWORKS Corporation         **
+**                                                            **
+****************************************************************
+****************************************************************
+
+ Total number of nodes                      =     17604
+ Total number of elements                   =      8728
+
+ First order elements
+ Using PCG Solver
+
+ Type of analysis      :     Linear Steady State
+
+
+Nodal temperature results at time step =     1     (Time =     0.00000    )
+--------------------------------------------------------------------------------
+
+    Node   Temperature      Node   Temperature      Node   Temperature      Node   Temperature
+ ================================================================================================
+
+
+   Tmax  =  345.05514    
+   Tmin  =  337.91502    
+
+
+
+Nodal Gradient and Heat Flux at time step =     1  (Time =  0.0000000    )
+--------------------------------------------------------------------------------
+
+    Node  Gradient_X      Gradient_Y      Gradient_Z      Heat Flux_X     Heat Flux_Y     Heat Flux_Z
+ ==========================================================================================================
+
+ Minimum/Maximum Temperature Gradient and Heat Flux
+
+ Node          16946           17572              68           17003           16681           16899
+ Min.     -267.94669      -1653.1646      -239.64747      -47361.069      -3392.1490      -38846.817    
+ Node             63           16681           16906           16939           17572           16972
+ Max.      270.45207       16.960745       239.13127       47539.453       46288.609       41414.074    
+
+
+Nodal Heat Balance at time step =     1    (Time =  0.0000000    )
+--------------------------------------------------------------------------------
+    Node     Applied      Conduction      Convection       Radiation        Reaction   Sys. Internal         Balance
+ Input     25.000000      3.96543402E-10   0.0000000       0.0000000       0.0000000       0.0000000       24.999999    
+ Output  -9.75613137E-07 -3.15960329E-10  -24.999999       0.0000000       0.0000000       0.0000000      -24.999999    
+
+ Total Heating applied to the system      =  24.999999    
+ Heat convected from system to environment=  24.999999    
+ System heat balance=                     = 5.37276890E-11
+
+Solution Time log
+--------------------------------------------------------------------------------
+  Input phase                                     =          0.0
+  Assemblage of matrices                          =          0.5
+  Preconditioning of conductivity matrix          =          0.1
+  Solution of equations                           =          0.3
+  Miscellaneous calculations                      =          0.0
+  Total Solution Time                             =          1.0
