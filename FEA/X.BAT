@@ -1,0 +1,12 @@
+c:\users\nailt\appdata\local\temp\Assem1-Thermal 1
+c:\users\nailt\appdata\local\temp\Assem1-Thermal 1
+c:\users\nailt\appdata\local\temp\Assem1-Thermal 1
+c:\users\nailt\appdata\local\temp\Assem1-Thermal 1
+c:\users\nailt\appdata\local\temp\Assem1-Thermal 1
+c:\users\nailt\appdata\local\temp\Assem1-Thermal 1
+c:\users\nailt\appdata\local\temp\Assem1-Thermal 1
+c:\users\nailt\appdata\local\temp\Assem1-Thermal 1
+c:\users\nailt\appdata\local\temp\Assem1-Thermal 1
+c:\users\nailt\appdata\local\temp\Assem1-Thermal 1
+c:\users\nailt\appdata\local\temp\Assem1-Thermal 1
+C:\Users\nailt\Desktop\desktoption\FEA\A21112018-Thermal 1
