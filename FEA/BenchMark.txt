@@ -1,4 +1,4 @@
-TransferDataToSolver Start 5e+002 
-TransferDataToSolver End 5e+002 
-ShowFirstPlot Start 5e+002 
-ShowFirstPlot End 5e+002 
+TransferDataToSolver Start 1.2e+003 
+TransferDataToSolver End 1.2e+003 
+ShowFirstPlot Start 1.2e+003 
+ShowFirstPlot End 1.2e+003 
