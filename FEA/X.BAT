@@ -18,3 +18,4 @@ C:\Users\nailt\Desktop\termal\FEA\A21112018-Thermal 2
 C:\Users\nailt\Desktop\termal\FEA\A21112018-Thermal 2
 C:\Users\nailt\Desktop\termal\FEA\A21112018-Thermal 2
 C:\Users\nailt\Desktop\termal\FEA\A21112018-Thermal 2
+C:\Users\nailt\Desktop\termal\FEA\pazargunu-Thermal 1
