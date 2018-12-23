@@ -26,15 +26,15 @@ length = zeros(37,1);
 thermal_resistance =zeros(37,1);
 y = A/(3E-3)
 b = 3E-3
+(1)
 for i = 1:37
     C = 1.42;
     n = 0.25;
     A =317.66E-6;
     L =index(i); 
-    Surface_area=2*(y+b)*L+A
     length(i)=index(i)
     power = 60/12;
     T_s = (power/(C*A))^(1/(n+1))*L^(n/(n+1))+T_a;
     h_fin(i) = C*((T_s-T_a)/L)^n
-    thermal_resistance(i) = 1/((h_fin(i)*Surface_area)*12);
+    thermal_resistance(i) = 1/(h_fin(i)*(A/(2*(3E-3)+3E-3))*L+A);
 end

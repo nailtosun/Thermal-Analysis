@@ -36,15 +36,12 @@ n = 0.25;
 T_s = (60/(C*A))^(1/(n+1))*L^(n/(n+1))+T_a;
 h_base = C*((T_s-T_a)/L)^n
 % Gan
-L = 0.56E-3;
-A = 60.35E-6;
+L = 0.56E-3
+A = 60.35E-6
 T_s = (10/(C*A))^(1/(n+1))*L^(n/(n+1))+T_a;
 h_gan = C*((T_s-T_a)/L)^n
 % PCB
 A = 14188E-6;
+T_s = (6/(C*A))^(1/(n+1))*L^(n/(n+1))+T_a;
 L = 1E-3;
-T_s = (60/(C*A))^(1/(n+1))*L^(n/(n+1))+T_a;
 h_pcb = C*((T_s-T_a)/L)^n
-% Fins of the heat sink (Vertical heat problem)
-C = 1.42;
-n = 0.25;
